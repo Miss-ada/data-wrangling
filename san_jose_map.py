@@ -1,5 +1,16 @@
 ## create samole
 import xml.etree.ElementTree as ET  # Use cElementTree or lxml if too slow
+from collections import defaultdict
+import re
+import pprint
+import csv
+import codecs
+import cerberus
+import schema
+import sqlite3
+import csv
+import os
+from hurry.filesize import size
 
 OSM_FILE = "san-jose_california.osm"  # Replace this with your osm file
 SAMPLE_FILE = "sample.osm"
@@ -51,10 +62,6 @@ print tags
 
 ##update the street name titles:
 
-import xml.etree.cElementTree as ET
-from collections import defaultdict
-import re
-import pprint
 
 street_type_re = re.compile(r'\b\S+\.?$', re.IGNORECASE)
 
@@ -154,15 +161,6 @@ osm_file.close()
     
 ##Write parsed data into cvs files
 
-import csv
-import codecs
-import pprint
-import re
-import xml.etree.cElementTree as ET
-
-import cerberus
-
-import schema
 
 OSM_PATH = "san-jose_california.osm"
 
@@ -357,9 +355,7 @@ if __name__ == '__main__':
 
 
 ##import cvs
-import sqlite3
-import csv
-from pprint import pprint
+
 
 sqlite_file = 'mydb.db'    # name of the sqlite database file
 
@@ -526,9 +522,6 @@ conn.close()
 
 
 ##find file size
-from pprint import pprint
-import os
-from hurry.filesize import size
 
 dirpath = '/Users/wenjia.ma/Udacity/data-wrangling/openMap/csv'
 
@@ -544,7 +537,6 @@ for filename, size in files_list:
 
 
 ##find number of nodes:
-import sqlite3
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
 
